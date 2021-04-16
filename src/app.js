@@ -7,10 +7,9 @@ var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
 var renderer = new THREE.WebGLRenderer({antialias: true});
 renderer.physicallyCorrectLights = true;
-renderer.outputEncoding = sRGBEncoding;
+renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.setClearColor( 0xcccccc );
 renderer.setPixelRatio( window.devicePixelRatio );
-renderer.setSize( el.clientWidth, el.clientHeight );
 
 var pmremGenerator = new THREE.pmremGenerator( renderer );
 pmremGenerator.compileEquirectangularShader();
