@@ -1,13 +1,151 @@
+import {
+	AmbientLight,
+	AnimationMixer,
+	AxesHelper,
+	Box3,
+	Cache,
+	CubeTextureLoader,
+	DirectionalLight,
+	GridHelper,
+	HemisphereLight,
+	LinearEncoding,
+	LoaderUtils,
+	LoadingManager,
+	PMREMGenerator,
+	PerspectiveCamera,
+	RGBFormat,
+	Scene,
+	SkeletonHelper,
+	UnsignedByteType,
+	Vector3,
+	WebGLRenderer,
+	sRGBEncoding,
+  } from 'three';
+
+import { GUI } from 'dat.gui';
+import { createBackground } from '../lib/three-vignette.js';
+import { environments } from '../assets/environment/index.js';
+
+const Preset = {ASSET_GENERATOR: 'assetgenerator'};
+const DEFAULT_CAMERA = '[default]';
+const IS_IOS = isIOS();
+
+this.state = {
+	environment: options.preset === Preset.ASSET_GENERATOR
+	  ? environments.find((e) => e.id === 'footprint-court').name
+	  : environments[1].name,
+	background: false,
+	playbackSpeed: 1.0,
+	actionStates: {},
+	camera: DEFAULT_CAMERA,
+	wireframe: false,
+	skeleton: false,
+	grid: false,
+
+	// Lights
+	addLights: true,
+	exposure: 1.0,
+	textureEncoding: 'sRGB',
+	ambientIntensity: 0.3,
+	ambientColor: 0xFFFFFF,
+	directIntensity: 0.8 * Math.PI, // TODO(#116)
+	directColor: 0xFFFFFF,
+	bgColor1: '#ffffff',
+	bgColor2: '#353535'
+  };
+
+this.prevTime = 0;
+
+this.stats = new Stats();
+this.stats.dom.height = '48px';
+[].forEach.call(this.stats.dom.children, (child) => (child.style.display = ''));
+
+var scene = new THREE.Scene();
+
+const fov = options.preset === Preset.ASSET_GENERATOR
+      ? 0.8 * 180 / Math.PI
+      : 60;
+this.defaultCamera = new PerspectiveCamera( fov, el.clientWidth / el.clientHeight, 0.01, 1000 );
+this.activeCamera = this.defaultCamera;
+scene.add( this.defaultCamera );
+
+this.renderer = window.renderer = new WebGLRenderer({antialias: true});
+this.renderer.physicallyCorrectLights = true;
+this.renderer.outputEncoding = sRGBEncoding;
+this.renderer.setClearColor( 0xcccccc );
+this.renderer.setPixelRatio( window.devicePixelRatio );
+this.renderer.setSize( el.clientWidth, el.clientHeight );
+
+this.pmremGenerator = new PMREMGenerator( this.renderer );
+this.pmremGenerator.compileEquirectangularShader();
+
+this.controls = new OrbitControls( this.defaultCamera, this.renderer.domElement );
+this.controls.autoRotate = false;
+this.controls.autoRotateSpeed = -10;
+this.controls.screenSpacePanning = true;
+
+this.vignette = createBackground({
+    aspect: this.defaultCamera.aspect,
+    grainScale: IS_IOS ? 0 : 0.001, // mattdesl/three-vignette-background#1
+    colors: [this.state.bgColor1, this.state.bgColor2]
+    });
+this.vignette.name = 'Vignette';
+this.vignette.renderOrder = -1;
+
+this.el.appendChild(this.renderer.domElement);
+
+this.cameraCtrl = null;
+this.cameraFolder = null;
+this.animFolder = null;
+this.animCtrls = [];
+this.morphFolder = null;
+this.morphCtrls = [];
+this.skeletonHelpers = [];
+this.gridHelper = null;
+this.axesHelper = null;
+
+this.addAxesHelper();
+this.addGUI();
+if (options.kiosk) this.gui.close();
+
+this.animate = this.animate.bind(this);
+requestAnimationFrame( this.animate );
+window.addEventListener('resize', this.resize.bind(this), false);
+
+render () {
+
+    this.renderer.render( this.scene, this.activeCamera );
+    if (this.state.grid) {
+      this.axesCamera.position.copy(this.defaultCamera.position)
+      this.axesCamera.lookAt(this.axesScene.position)
+      this.axesRenderer.render( this.axesScene, this.axesCamera );
+    }
+  }
+
+  resize () {
+
+    const {clientHeight, clientWidth} = this.el.parentElement;
+
+    this.defaultCamera.aspect = clientWidth / clientHeight;
+    this.defaultCamera.updateProjectionMatrix();
+    this.vignette.style({aspect: this.defaultCamera.aspect});
+    this.renderer.setSize(clientWidth, clientHeight);
+
+    this.axesCamera.aspect = this.axesDiv.clientWidth / this.axesDiv.clientHeight;
+    this.axesCamera.updateProjectionMatrix();
+    this.axesRenderer.setSize(this.axesDiv.clientWidth, this.axesDiv.clientHeight);
+  }
+//	
 
 var collisionMesh = [];
 var gravityOnOff = true;
 var arrayPos= [];
 var contadorIteraciones;
-var scene = new THREE.Scene();
-scene.background = new THREE.Color( 0xecf7f9);
+
+//scene.background = new THREE.Color( 0xecf7f9);
 var camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
 camera.position.set( 1, 1, 12 );
-var renderer = new THREE.WebGLRenderer({ alpha: true });
+//var renderer = new THREE.WebGLRenderer({ alpha: true });
 container = document.getElementById('frame');
 renderer.setSize(container.offsetWidth, container.offsetHeight);
 document.body.appendChild( container );
