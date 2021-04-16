@@ -96,15 +96,15 @@ function create_piece(){
             var cube = new THREE.Mesh( geometry, material );
 						 
 		cube.userData = [];
-		scene.add( cube );
+		scene.add(cube);
 		objetos.push(cube);	
 		objetos2.push(cube);
+		gravity(cube);
 			
 	});
 }
 
-function gravity(_mesh)
-{
+function gravity(_mesh){
 
 	let anyTarget= new THREE.Vector3();
 	let floorY = distanceToNextObject(_mesh , "y")
@@ -112,11 +112,9 @@ function gravity(_mesh)
 	var box = new THREE.Box3().setFromObject(_mesh);
 	const halfPc = box.getSize(anyTarget).y/2;
 
-		if(gravityOnOff)
-		{
-			_mesh.position.y = floorY + halfPc+0.01;
-			
-		}
+	if(gravityOnOff){
+		mesh.position.y = floorY + halfPc+0.01;	
+	}
 }		
 
 //		
