@@ -19,14 +19,11 @@ scene.add( ambientLight );
 var directionalLight = new THREE.DirectionalLight( 0xf5f5f5,0.3 );
 directionalLight.position.set( 50, 20, 200).normalize();
 scene.add( directionalLight );		
-//var helper1 = new THREE.DirectionalLightHelper( directionalLight, 5 );
-//scene.add(helper1);
+
 
 var directionalLight2 = new THREE.DirectionalLight( 0xf5f5f5,0.3);
 directionalLight2.position.set( -50, -20, -200).normalize();
 scene.add( directionalLight2 );		
-//var helper2 = new THREE.DirectionalLightHelper( directionalLight2, 5 );
-//scene.add(helper2);
 
 //object array
 var objetos=[];
@@ -105,7 +102,23 @@ function create_piece(){
 			
 	});
 }
-		    
+
+function gravity(_mesh)
+{
+
+	let anyTarget= new THREE.Vector3();
+	let floorY = distanceToNextObject(_mesh , "y")
+
+	var box = new THREE.Box3().setFromObject(_mesh);
+	const halfPc = box.getSize(anyTarget).y/2;
+
+		if(gravityOnOff)
+		{
+			_mesh.position.y = floorY + halfPc+0.01;
+			
+		}
+}		
+
 //		
 function createUserData(){
     for(i=0;i<objetos.length;i++){	
@@ -238,8 +251,8 @@ var animate = function (){
 	controls.update();
 				   
 	var collvar;
-	for(var i=0;i<objetos.length;i++){
-		//gravity(objetos[i]);	
+	for(var i=1;i<objetos.length;i++){
+		gravity(objetos[i]);	
 		savePos(objetos[i]);
 		checkCollision2(objetos[i]);
 		collvar=checkCollision2(objetos[i]);
