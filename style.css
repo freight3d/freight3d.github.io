@@ -15,7 +15,12 @@ body {
   display: flex;
   flex-direction: column;
 }
-			
+
+canvas{
+  height: 100%;
+  background: #F5F5F5;
+}
+
 #canvas2 {				
 	height: 90%;
   background: #F5F5F5;
