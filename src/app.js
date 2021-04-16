@@ -5,20 +5,20 @@ var contadorIteraciones;
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
-var renderer = window.renderer = new WebGLRenderer({antialias: true});
+var renderer = new THREE.WebGLRenderer({antialias: true});
 renderer.physicallyCorrectLights = true;
 renderer.outputEncoding = sRGBEncoding;
 renderer.setClearColor( 0xcccccc );
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( el.clientWidth, el.clientHeight );
 
-var pmremGenerator = new PMREMGenerator( renderer );
+var pmremGenerator = new THREE.pmremGenerator( renderer );
 pmremGenerator.compileEquirectangularShader();
 
 scene.background = new THREE.Color( 0xecf7f9);
 var camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
 camera.position.set( 1, 1, 12 );
-var renderer = new THREE.WebGLRenderer({ alpha: true });
+//var renderer = new THREE.WebGLRenderer({ alpha: true });
 container = document.getElementById('frame');
 renderer.setSize(container.offsetWidth, container.offsetHeight);
 document.body.appendChild( container );
