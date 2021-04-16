@@ -103,24 +103,11 @@ function create_piece(){
 		scene.add( cube );
 		objetos.push(cube);	
 		objetos2.push(cube);
-		//gravity(cube);			
+			
 	});
 }
 		    
 //		
-//function gravity(_mesh){
-//
-//    let anyTarget= new THREE.Vector3();
-//    let floorY = distanceToNextObject(_mesh , "y")
-//    	
-//    var box = new THREE.Box3().setFromObject(_mesh);
-//    const halfPc = box.getSize(anyTarget).y/2;
-//    		
-//    if(gravityOnOff){
-//    	_mesh.position.y = floorY + halfPc+0.01;		
-//    }
-//}
-
 function createUserData(){
     for(i=0;i<objetos.length;i++){	
 
@@ -150,8 +137,7 @@ function savePos(_mesh) {
             collisionBoolArray.push(collisionBool);
             collisionPoint=collisionResults[0].point;
              
-            controls2.enabled=false;
-            // reCenter();     
+            controls2.enabled=false;    
         }
         else{
         	controls2.enabled=true;
@@ -202,7 +188,6 @@ function checkCollision2(_mesh) {
             collisionPoint=collisionResults[0].point;   
             controls2.enabled=false;
            
-            // reCenter();
         }
         else{
         	controls2.enabled=true;
@@ -224,19 +209,19 @@ function checkCollision2(_mesh) {
     return [collisionBoolAll,collisionPoint];
 }
 
-function  distanceToNextObject(obj, axis){
-    let [x,y,z] = [0,0,0]
-    switch(axis){
-    	case "y":
-    	y = -1;
-    	break;
-    	case "x":
-    	x = -1;
-    	break;
-    	case "z":
-    	z = -1;
-    	break;
-    }
+//function  distanceToNextObject(obj, axis){
+//    let [x,y,z] = [0,0,0]
+//    switch(axis){
+//   	case "y":
+//    	y = -1;
+//    	break;
+//    	case "x":
+//    	x = -1;
+//    	break;
+//    	case "z":
+//    	z = -1;
+//    	break;
+//    }
 
     let raycaster = new THREE.Raycaster();
 
