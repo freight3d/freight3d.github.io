@@ -208,19 +208,19 @@ function checkCollision2(_mesh) {
     return [collisionBoolAll,collisionPoint];
 }
 
-//function  distanceToNextObject(obj, axis){
-//    let [x,y,z] = [0,0,0]
-//    switch(axis){
-//   	case "y":
-//    	y = -1;
-//    	break;
-//    	case "x":
-//    	x = -1;
-//    	break;
-//    	case "z":
-//    	z = -1;
-//    	break;
-//    }
+function  distanceToNextObject(obj, axis){
+    let [x,y,z] = [0,0,0]
+    switch(axis){
+   	case "y":
+    	y = -1;
+    	break;
+    	case "x":
+    	x = -1;
+    	break;
+    	case "z":
+    	z = -1;
+    	break;
+    }
 
     let raycaster = new THREE.Raycaster();
 
