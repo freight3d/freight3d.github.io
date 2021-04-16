@@ -151,16 +151,16 @@ renderer.setSize(container.offsetWidth, container.offsetHeight);
 document.body.appendChild( container );
 container.appendChild(renderer.domElement);
 		
-var ambientLight = new THREE.AmbientLight( 0xcccccc );
-scene.add( ambientLight );
+//var ambientLight = new THREE.AmbientLight( 0xcccccc );
+//scene.add( ambientLight );
 							
-var directionalLight = new THREE.DirectionalLight( 0xf5f5f5,0.3 );
-directionalLight.position.set( 50, 20, 200).normalize();
-scene.add( directionalLight );		
+//var directionalLight = new THREE.DirectionalLight( 0xf5f5f5,0.3 );
+//directionalLight.position.set( 50, 20, 200).normalize();
+//scene.add( directionalLight );		
 
-var directionalLight2 = new THREE.DirectionalLight( 0xf5f5f5,0.3);
-directionalLight2.position.set( -50, -20, -200).normalize();
-scene.add( directionalLight2 );		
+//var directionalLight2 = new THREE.DirectionalLight( 0xf5f5f5,0.3);
+//directionalLight2.position.set( -50, -20, -200).normalize();
+//scene.add( directionalLight2 );		
 
 //object array
 var objetos=[];
