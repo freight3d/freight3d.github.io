@@ -20,7 +20,7 @@ import {
 	Vector3,
 	WebGLRenderer,
 	sRGBEncoding,
-  } from '../src/three.js';';
+  } from '../src/three.js';
 
 import { GUI } from 'dat.gui';
 import { createBackground } from '../lib/three-vignette.js';
