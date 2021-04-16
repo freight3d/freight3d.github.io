@@ -8,7 +8,7 @@ scene.background = new THREE.Color( 0xecf7f9);
 var camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
 camera.position.set( 1, 1, 12 );
 var renderer = new THREE.WebGLRenderer({ alpha: true });
-container = document.getElementById('canvas2');
+container = document.getElementById('frame');
 renderer.setSize(container.offsetWidth, container.offsetHeight);
 document.body.appendChild( container );
 container.appendChild(renderer.domElement);
