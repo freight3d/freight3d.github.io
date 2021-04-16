@@ -237,7 +237,7 @@ function  distanceToNextObject(obj, axis){
 
     raycaster.set(obj.position, new THREE.Vector3(x,y,z));
     let intersects = raycaster.intersectObjects(collisionMesh);
-    //let point = intersects[0].point.y
+    let point = intersects[0].point.y
     			
     //console.log(point);
     return point;
