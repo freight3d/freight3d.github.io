@@ -219,29 +219,34 @@ function checkCollision2(_mesh) {
     return [collisionBoolAll,collisionPoint];
 }
 
-function  distanceToNextObject(obj, axis){
-    let [x,y,z] = [0,0,0]
-    switch(axis){
-   	case "y":
-    	y = -1;
-    	break;
-    	case "x":
-    	x = -1;
-    	break;
-    	case "z":
-    	z = -1;
-    	break;
-    }
 
-    let raycaster = new THREE.Raycaster();
+function  distanceToNextObject(obj, axis)
+{
+	let [x,y,z] = [0,0,0]
+	switch(axis)
+	{
+		case "y":
+		y = -1;
+		break;
+		case "x":
+		x = -1;
+		break;
+		case "z":
+		z = -1;
+		break;
+	}
 
-    raycaster.set(obj.position, new THREE.Vector3(x,y,z));
-    let intersects = raycaster.intersectObjects(collisionMesh);
-    let point = intersects[0].point.y
-    			
-    //console.log(point);
-    return point;
+	let raycaster = new THREE.Raycaster();
+
+	raycaster.set(obj.position, new THREE.Vector3(x,y,z));
+	let intersects = raycaster.intersectObjects(collisionMesh);
+	let point = intersects[0].y
+	
+	//console.log(point);
+	return point;
 }
+
+
 		
 var animate = function (){
 	requestAnimationFrame(animate);
