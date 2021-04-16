@@ -99,7 +99,7 @@ function create_piece(){
 		scene.add(cube);
 		objetos.push(cube);	
 		objetos2.push(cube);
-		gravity(cube);
+		//gravity(cube);
 			
 	});
 }
@@ -220,32 +220,32 @@ function checkCollision2(_mesh) {
 }
 
 
-function  distanceToNextObject(obj, axis)
-{
-	let [x,y,z] = [0,0,0]
-	switch(axis)
-	{
-		case "y":
-		y = -1;
-		break;
-		case "x":
-		x = -1;
-		break;
-		case "z":
-		z = -1;
-		break;
-	}
-
-	let raycaster = new THREE.Raycaster();
-
-	raycaster.set(obj.position, new THREE.Vector3(x,y,z));
-	let intersects = raycaster.intersectObjects(collisionMesh);
-	let point = raycaster.distanceTo(obj.position);
+//function  distanceToNextObject(obj, axis)
+//{
+//	let [x,y,z] = [0,0,0]
+//	switch(axis)
+//	{
+//		case "y":
+//		y = -1;
+//		break;
+//		case "x":
+//		x = -1;
+//		break;
+//		case "z":
+//		z = -1;
+//		break;
+//	}
+//
+//	let raycaster = new THREE.Raycaster();
+//
+//	raycaster.set(obj.position, new THREE.Vector3(x,y,z));
+//	let intersects = raycaster.intersectObjects(collisionMesh);
+//	let point = raycaster.distanceTo(obj.position);
 	//let point = intersects[0].y
 	
 	//console.log(point);
-	return point;
-}
+//	return point;
+//}
 
 
 		
@@ -256,10 +256,10 @@ var animate = function (){
 				   
 	var collvar;
 	for(var i=1;i<objetos.length;i++){
-		gravity(objetos[i]);	
+		//gravity(objetos[i]);	
 		savePos(objetos[i]);
-		checkCollision2(objetos[i]);
-		collvar=checkCollision2(objetos[i]);
+		//checkCollision2(objetos[i]);
+		//collvar=checkCollision2(objetos[i]);
 				   		
 		_mesh = objetos[i];
 		if (collvar[0]){
@@ -271,9 +271,9 @@ var animate = function (){
             _mesh.position.z=_mesh.userData[j][0].z;
 
 		};
-		if(checkCollision2(objetos[i])[0]===false){
-			contadorIteraciones=0;
-		}
+		//if(checkCollision2(objetos[i])[0]===false){
+		//	contadorIteraciones=0;
+		//}
 		
 	};
 };
