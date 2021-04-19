@@ -12,8 +12,8 @@ renderer.setClearColor( 0xcccccc );
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( el.clientWidth, el.clientHeight );
 
-var pmremGenerator = new THREE.pmremGenerator(renderer);
-pmremGenerator.compileEquirectangularShader();
+//var pmremGenerator = new THREE.pmremGenerator(renderer);
+//pmremGenerator.compileEquirectangularShader();
 
 scene.background = new THREE.Color( 0xecf7f9);
 var camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
