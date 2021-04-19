@@ -8,7 +8,7 @@ var camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeig
 var renderer =  new THREE.WebGLRenderer({ alpha: true });
 renderer.physicallyCorrectLights = true;
 renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.setClearColor( 0x000000 );
+renderer.setClearColor(0x000000, 0);
 renderer.setPixelRatio( window.devicePixelRatio );
 
 scene.background = new THREE.Color(0xf5f5f5);
