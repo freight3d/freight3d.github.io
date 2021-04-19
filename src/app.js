@@ -10,7 +10,7 @@ renderer.physicallyCorrectLights = true;
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.setClearColor( 0xcccccc );
 renderer.setPixelRatio( window.devicePixelRatio );
-renderer.setSize( el.clientWidth, el.clientHeight );
+//renderer.setSize( el.clientWidth, el.clientHeight );
 
 //var pmremGenerator = new THREE.pmremGenerator(renderer);
 //pmremGenerator.compileEquirectangularShader();
