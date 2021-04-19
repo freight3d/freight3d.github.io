@@ -19,7 +19,8 @@ renderer.setSize(container.offsetWidth, container.offsetHeight);
 document.body.appendChild( container );
 container.appendChild(renderer.domElement);
 		
-var light = new THREE.AmbientLight( 0xcccccc );
+//var light = new THREE.AmbientLight( 0xcccccc );
+var light = new THREE.HemisphereLight();
 scene.add( light );
 							
 var directionalLight = new THREE.DirectionalLight( 0xf5f5f5,0.3 );
