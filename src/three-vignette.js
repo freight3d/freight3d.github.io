@@ -2,8 +2,8 @@
  * Source: https://github.com/mattdesl/three-vignette-background
  * License: MIT
  */
-import vert as VERT from './three-vignette.vert';
-import frag from as FRAG './three-vignette.frag';
+import vert as VERT from 'three-vignette.vert';
+import frag from as FRAG 'three-vignette.frag';
 
 function createBackground (opt) {
   opt = opt || {}
