@@ -23,11 +23,11 @@ container.appendChild(renderer.domElement);
 var light = new THREE.HemisphereLight();
 scene.add( light );
 							
-var directionalLight = new THREE.DirectionalLight( 0xf5f5f5,0.3 );
+var directionalLight = new THREE.DirectionalLight( 0xffffff,0.3 );
 directionalLight.position.set( 50, 20, 200).normalize();
 scene.add( directionalLight );		
 
-var directionalLight2 = new THREE.DirectionalLight( 0xf5f5f5,0.3);
+var directionalLight2 = new THREE.DirectionalLight( 0xffffff5,0.3);
 directionalLight2.position.set( -50, -20, -200).normalize();
 scene.add( directionalLight2 );		
 
