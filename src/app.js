@@ -231,8 +231,8 @@ function createBackground (opt) {
 	opt = opt || {}
 	var geometry = opt.geometry || new THREE.PlaneGeometry(2, 2, 1)
 	var material = new THREE.RawShaderMaterial({
-	  vertexShader: 'three-vignette.vert',
-	  fragmentShader: 'three-vignette.frag',
+	  vertexShader: './three-vignette.vert',
+	  fragmentShader: './three-vignette.frag',
 	  side: THREE.DoubleSide,
 	  uniforms: {
 		aspectCorrection: { type: 'i', value: false },
