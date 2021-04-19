@@ -1,3 +1,6 @@
+import vert from 'three-vignette.vert';
+import frag from 'three-vignette.frag';
+
 var collisionMesh = [];
 var gravityOnOff = true;
 var arrayPos= [];
@@ -57,7 +60,7 @@ controls2.addEventListener( 'dragend', function ( event ) {
 
 //
 function clear_canvas(){
-	
+
 	for(var i = scene.children.length - 1; i >= 0; i--) { 
 		obj = scene.children[i];
 		scene.remove(obj); 
@@ -231,8 +234,8 @@ function createBackground (opt) {
 	opt = opt || {}
 	var geometry = opt.geometry || new THREE.PlaneGeometry(2, 2, 1)
 	var material = new THREE.RawShaderMaterial({
-	  //vertexShader: VERT.vert,
-	  //fragmentShader: FRAG.frag,
+	  vertexShader: vert,
+	  fragmentShader: frag,
 	  side: THREE.DoubleSide,
 	  uniforms: {
 		aspectCorrection: { type: 'i', value: false },
