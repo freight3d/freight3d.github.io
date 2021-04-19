@@ -1,6 +1,3 @@
-import vert from 'three-vignette.vert';
-import frag from 'three-vignette.frag';
-
 var collisionMesh = [];
 var gravityOnOff = true;
 var arrayPos= [];
@@ -234,8 +231,8 @@ function createBackground (opt) {
 	opt = opt || {}
 	var geometry = opt.geometry || new THREE.PlaneGeometry(2, 2, 1)
 	var material = new THREE.RawShaderMaterial({
-	  vertexShader: vert,
-	  fragmentShader: frag,
+	  vertexShader: 'three-vignette.vert',
+	  fragmentShader: 'three-vignette.frag',
 	  side: THREE.DoubleSide,
 	  uniforms: {
 		aspectCorrection: { type: 'i', value: false },
