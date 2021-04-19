@@ -2,15 +2,15 @@
  * Source: https://github.com/mattdesl/three-vignette-background
  * License: MIT
  */
-import vert as VERT from 'three-vignette.vert';
-import frag from as FRAG 'three-vignette.frag';
+//import vert as VERT from 'three-vignette.vert';
+//import frag from as FRAG 'three-vignette.frag';
 
 function createBackground (opt) {
   opt = opt || {}
   var geometry = opt.geometry || new THREE.PlaneGeometry(2, 2, 1)
   var material = new THREE.RawShaderMaterial({
-    vertexShader: VERT.vert,
-    fragmentShader: FRAG.frag,
+    //vertexShader: VERT.vert,
+    //fragmentShader: FRAG.frag,
     side: THREE.DoubleSide,
     uniforms: {
       aspectCorrection: { type: 'i', value: false },
