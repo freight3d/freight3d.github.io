@@ -1,7 +1,7 @@
 var collisionMesh = [];
 var gravityOnOff = true;
 var arrayPos= [];
-var contadorIteraciones;
+var count_iter;
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
@@ -18,14 +18,13 @@ renderer.setPixelRatio( window.devicePixelRatio );
 scene.background = new THREE.Color( 0xecf7f9);
 var camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
 camera.position.set( 1, 1, 12 );
-//var renderer = new THREE.WebGLRenderer({ alpha: true });
 container = document.getElementById('frame');
 renderer.setSize(container.offsetWidth, container.offsetHeight);
 document.body.appendChild( container );
 container.appendChild(renderer.domElement);
 		
-var ambientLight = new THREE.AmbientLight( 0xcccccc );
-scene.add( ambientLight );
+var light = new THREE.AmbientLight( 0xcccccc );
+scene.add( light );
 							
 var directionalLight = new THREE.DirectionalLight( 0xf5f5f5,0.3 );
 directionalLight.position.set( 50, 20, 200).normalize();
@@ -36,11 +35,11 @@ directionalLight2.position.set( -50, -20, -200).normalize();
 scene.add( directionalLight2 );		
 
 //object array
-var objetos=[];
-var objetos2=[];
+var pieces=[];
+var pieces2=[];
 
 //CONTROLS
-var controls2 = new THREE.DragControls( objetos2, camera, renderer.domElement );
+var controls2 = new THREE.DragControls( pieces2, camera, renderer.domElement );
 var controls = new THREE.OrbitControls( camera, renderer.domElement );	
 
 // add event listener to highlight dragged objects
@@ -107,8 +106,8 @@ function create_piece(){
 						 
 		cube.userData = [];
 		scene.add(cube);
-		objetos.push(cube);	
-		objetos2.push(cube);
+		pieces.push(cube);	
+		pieces2.push(cube);
 			
 	});
 }
@@ -128,9 +127,9 @@ function gravity(_mesh){
 
 //		
 function createUserData(){
-    for(i=0;i<objetos.length;i++){	
+    for(i=0;i<pieces.length;i++){	
 
-    	objetos[i].userData = [];
+    	pieces[i].userData = [];
    	}
 }
 
@@ -235,13 +234,13 @@ var animate = function (){
 	controls.update();
 				   
 	var collvar;
-	for(var i=1;i<objetos.length;i++){	
-		savePos(objetos[i]);
+	for(var i=1;i<pieces.length;i++){	
+		savePos(pieces[i]);
 			   		
-		_mesh = objetos[i];
+		_mesh = pieces[i];
 		if (collvar[0]){
-			contadorIteraciones+=1;
-			let j= Math.max(objetos[i].userData.length - contadorIteraciones-1,0);	
+			count_iter+=1;
+			let j= Math.max(pieces[i].userData.length - count_iter-1,0);	
 				   			
             _mesh.position.y=_mesh.userData[j][0].y;
             _mesh.position.x=_mesh.userData[j][0].x;
