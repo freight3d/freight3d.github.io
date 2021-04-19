@@ -5,10 +5,10 @@ var count_iter;
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
-var renderer =  new THREE.WebGLRenderer({ alpha: true });
+var renderer =  new THREE.WebGLRenderer({antialias: true});
 renderer.physicallyCorrectLights = true;
 renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.setClearColor(0x000000, 0);
+renderer.setClearColor( 0xcccccc );
 renderer.setPixelRatio( window.devicePixelRatio );
 
 scene.background = new THREE.Color(0xf5f5f5);
