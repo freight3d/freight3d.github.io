@@ -105,20 +105,7 @@ function create_piece(){
 			
 	});
 }
-
-function gravity(_mesh){
-
-	let anyTarget= new THREE.Vector3();
-	let floorY = distanceToNextObject(_mesh , "y")
-
-	var box = new THREE.Box3().setFromObject(_mesh);
-	const halfPc = box.getSize(anyTarget).y/2;
-
-	if(gravityOnOff){
-		mesh.position.y = floorY + halfPc+0.01;	
-	}
-}		
-
+		
 //		
 function createUserData(){
     for(i=0;i<pieces.length;i++){	
