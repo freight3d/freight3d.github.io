@@ -3,31 +3,32 @@ var gravityOnOff = true;
 var arrayPos= [];
 var count_iter;
 
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
-var renderer =  new THREE.WebGLRenderer({antialias: true});
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xf5f5f5);
+scene.fog = new THREE.Fog(0xc0830, 0, 60);
+
+const camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
+camera.position.set( 1, 1, 12 );
+
+const renderer =  new THREE.WebGLRenderer({antialias: true});
 renderer.physicallyCorrectLights = true;
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.setClearColor( 0xcccccc );
 renderer.setPixelRatio( window.devicePixelRatio );
 
-scene.background = new THREE.Color(0xf5f5f5);
-var camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
-camera.position.set( 1, 1, 12 );
 container = document.getElementById('frame');
 renderer.setSize(container.offsetWidth, container.offsetHeight);
 document.body.appendChild( container );
 container.appendChild(renderer.domElement);
-		
-//var light = new THREE.AmbientLight( 0xcccccc );
-var light = new THREE.HemisphereLight();
+
+const light = new THREE.HemisphereLight();
 scene.add( light );
 							
-var directionalLight = new THREE.DirectionalLight( 0xffffff,0.3 );
+const directionalLight = new THREE.DirectionalLight( 0xffffff,0.3 );
 directionalLight.position.set( 50, 20, 200).normalize();
 scene.add( directionalLight );		
 
-var directionalLight2 = new THREE.DirectionalLight( 0xffffff5,0.3);
+const directionalLight2 = new THREE.DirectionalLight( 0xffffff,0.3);
 directionalLight2.position.set( -50, -20, -200).normalize();
 scene.add( directionalLight2 );		
 
