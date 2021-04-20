@@ -73,6 +73,12 @@ function uld(model_name){
 		const size = box.getSize(new THREE.Vector3()).length();
 		const center = box.getCenter(new THREE.Vector3());
 		
+		const light = new THREE.HemisphereLight(0xffffff, 0x43399d, 1);
+		scene.add( light );
+		const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.4 );
+		directionalLight.position.set( 2, 2, 2);
+		scene.add( directionalLight );	
+
 		obj.position.x += (obj.position.x - center.x);
 		obj.position.y += (obj.position.y - center.y);
 		obj.position.z += (obj.position.z - center.z);	
