@@ -49,6 +49,21 @@
       "name": "Translucent Glass Gray",
       "doubleSided": true,
       "alphaMode": "BLEND"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.1275,
+          0.3066,
+          0.8513,
+          0.5
+        ],
+        "metallicFactor": 0.1,
+        "roughnessFactor": 0.9
+      },
+      "name": "Translucent Glass Blue",
+      "doubleSided": true,
+      "alphaMode": "BLEND"
     }
   ],
   "meshes": [
@@ -71,6 +86,15 @@
           "indices": 3,
           "mode": 4,
           "material": 1
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 4,
+          "mode": 4,
+          "material": 2
         }
       ]
     }
@@ -117,9 +141,16 @@
     {
       "bufferView": 2,
       "componentType": 5121,
-      "count": 18,
+      "count": 12,
       "type": "SCALAR",
       "byteOffset": 36
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5121,
+      "count": 6,
+      "type": "SCALAR",
+      "byteOffset": 48
     }
   ],
   "bufferViews": [
