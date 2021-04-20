@@ -25,15 +25,15 @@
     {
       "pbrMetallicRoughness": {
         "baseColorFactor": [
-          0.0802,
-          0.0802,
-          0.0802,
+          0.4045,
+          0.4045,
+          0.4045,
           1.0
         ],
         "metallicFactor": 0.1,
         "roughnessFactor": 0.9
       },
-      "name": "0135_DarkGray"
+      "name": "0132_LightGray"
     },
     {
       "pbrMetallicRoughness": {
