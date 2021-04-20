@@ -5,7 +5,7 @@ var count_iter;
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xf5f5f5);
-scene.fog = new THREE.Fog(0xc0830, 0, 60);
+scene.fog = new THREE.Fog(0xc0830, 0, 10);
 
 const camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
 camera.position.set( 1, 1, 12 );
