@@ -76,7 +76,7 @@ function uld(model_name){
 		const box = new THREE.Box3().setFromObject(obj);
 		const size = box.getSize(new THREE.Vector3()).length();
 		const center = box.getCenter(new THREE.Vector3());
-		const encoding = obj.textureEncoding === 'sRGB'
+		const encoding = THREE.textureEncoding === 'sRGB'
       		? sRGBEncoding
       		: LinearEncoding;
     	traverseMaterials(obj.content, (material) => {
