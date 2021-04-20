@@ -154,10 +154,10 @@ THREE.DragControls = function ( _objects, _camera, _domElement ) {
 			    if ( intersects.length > 0 ) {
 
 
-			     for (var i = 0; i < objetos.length; i++) {
-			     	if(objetos[i]===_selected)
+			     for (var i = 0; i < pieces.length; i++) {
+			     	if(pieces[i]===_selected)
 			     	{
-			     		objetos.splice(i,1);
+			     		pieces.splice(i,1);
 			     		
 
 			     	}
@@ -169,11 +169,11 @@ THREE.DragControls = function ( _objects, _camera, _domElement ) {
 			     	}
 
 			     	}
-			     for (var i = 0; i < objetos2.length; i++) {
-			     	if(objetos2[i]===_selected)
+			     for (var i = 0; i < pieces2.length; i++) {
+			     	if(pieces2[i]===_selected)
 			     	{
 			     		
-			     		objetos2.splice(i,1);
+			     		pieces2.splice(i,1);
 
 			     	}
 			     }
