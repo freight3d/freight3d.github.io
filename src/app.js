@@ -3,18 +3,18 @@ var gravityOnOff = true;
 var arrayPos= [];
 var count_iter;
 
+const renderer =  new THREE.WebGLRenderer({antialias: true});
+renderer.physicallyCorrectLights = true;
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.setClearColor( 0xcccccc );
+renderer.setPixelRatio( window.devicePixelRatio );
+
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xf5f5f5);
 scene.fog = new THREE.Fog(0xc0830, 0, 100);
 
 const camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
 camera.position.set( 1, 1, 12 );
-
-const renderer =  new THREE.WebGLRenderer({antialias: true});
-renderer.physicallyCorrectLights = true;
-renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.setClearColor( 0xcccccc );
-renderer.setPixelRatio( window.devicePixelRatio );
 
 container = document.getElementById('frame');
 renderer.setSize(container.offsetWidth, container.offsetHeight);
@@ -24,13 +24,13 @@ container.appendChild(renderer.domElement);
 const light = new THREE.HemisphereLight();
 scene.add( light );
 							
-const directionalLight = new THREE.DirectionalLight( 0xffffff,0.3 );
-directionalLight.position.set( 50, 20, 200).normalize();
+const directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
+directionalLight.position.set( -1, 2, 4);
 scene.add( directionalLight );		
 
-const directionalLight2 = new THREE.DirectionalLight( 0xffffff,0.3);
-directionalLight2.position.set( -50, -20, -200).normalize();
-scene.add( directionalLight2 );		
+//const directionalLight2 = new THREE.DirectionalLight( 0xffffff,0.3);
+//directionalLight2.position.set( -50, -20, -200).normalize();
+//scene.add( directionalLight2 );		
 
 //object array
 var pieces=[];
@@ -76,14 +76,7 @@ function uld(model_name){
 		const box = new THREE.Box3().setFromObject(obj);
 		const size = box.getSize(new THREE.Vector3()).length();
 		const center = box.getCenter(new THREE.Vector3());
-		const encoding = obj.textureEncoding === 'sRGB'
-      		? THREE.sRGBEncoding
-      		: THREE.LinearEncoding;
-    	traverseMaterials(obj.content, (material) => {
-      		if (material.map) material.map.encoding = encoding;
-      		if (material.emissiveMap) material.emissiveMap.encoding = encoding;
-      		if (material.map || material.emissiveMap) material.needsUpdate = true;
-    	});
+		
 		obj.position.x += (obj.position.x - center.x);
 		obj.position.y += (obj.position.y - center.y);
 		obj.position.z += (obj.position.z - center.z);	
