@@ -13,13 +13,6 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xf5f5f5);
 scene.fog = new THREE.Fog(0xc0830, 0, 100);
 
-// Light parameters
-const light = new THREE.HemisphereLight(0xffffff, 0x43399d, 1);
-scene.add( light );
-const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.4 );
-directionalLight.position.set( 2, 2, 2);
-scene.add( directionalLight );	
-
 const camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
 camera.position.set( 1, 1, 12 );
 
@@ -72,9 +65,9 @@ function uld(model_name){
 		const box = new THREE.Box3().setFromObject(obj);
 		const size = box.getSize(new THREE.Vector3()).length();
 		const center = box.getCenter(new THREE.Vector3());
-		
-		//const light = new THREE.HemisphereLight(0xffffff, 0x43399d, 1);
-		//scene.add( light );
+		// Light parameters
+		const light = new THREE.HemisphereLight(0xffffff, 0x43399d, 1);
+		scene.add( light );
 		const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.4 );
 		directionalLight.position.set( 2, 2, 2);
 		scene.add( directionalLight );	
