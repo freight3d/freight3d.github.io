@@ -13,6 +13,13 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xf5f5f5);
 scene.fog = new THREE.Fog(0xc0830, 0, 100);
 
+// Light parameters
+const light = new THREE.HemisphereLight(0xffffff, 0x43399d, 1);
+scene.add( light );
+const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.4 );
+directionalLight.position.set( 2, 2, 2);
+scene.add( directionalLight );	
+
 const camera = new THREE.PerspectiveCamera( 25, window.innerWidth/window.innerHeight, 0.1, 1000 );
 camera.position.set( 1, 1, 12 );
 
@@ -20,17 +27,6 @@ container = document.getElementById('frame');
 renderer.setSize(container.offsetWidth, container.offsetHeight);
 document.body.appendChild( container );
 container.appendChild(renderer.domElement);
-
-const light = new THREE.HemisphereLight();
-scene.add( light );
-							
-const directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
-directionalLight.position.set( -1, 2, 4);
-scene.add( directionalLight );		
-
-//const directionalLight2 = new THREE.DirectionalLight( 0xffffff,0.3);
-//directionalLight2.position.set( -50, -20, -200).normalize();
-//scene.add( directionalLight2 );		
 
 //object array
 var pieces=[];
