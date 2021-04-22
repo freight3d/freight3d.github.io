@@ -1,8 +1,3 @@
-var collisionMesh = [];
-var gravityOnOff = true;
-var arrayPos= [];
-var count_iter;
-
 const renderer =  new THREE.WebGLRenderer({antialias: true});
 renderer.physicallyCorrectLights = true;
 renderer.outputEncoding = THREE.sRGBEncoding;
@@ -22,6 +17,7 @@ document.body.appendChild( container );
 container.appendChild(renderer.domElement);
 
 //object array
+var collisionMesh = [];
 var pieces=[];
 var pieces2=[];
 
@@ -34,13 +30,11 @@ var controls = new THREE.OrbitControls( camera, renderer.domElement );
 controls2.addEventListener( 'dragstart', function ( event ) {
 		
 	controls.enabled = false;
-	gravityOnOff=false;
 } );
 
 controls2.addEventListener( 'dragend', function ( event ) {
 
 	controls.enabled = true;
-	gravityOnOff=true;
 } );
 
 //
@@ -105,7 +99,7 @@ function create_piece(){
 			
 	});
 }
-		
+	
 //		
 function createUserData(){
     for(i=0;i<pieces.length;i++){	
@@ -218,15 +212,6 @@ var animate = function (){
 		savePos(pieces[i]);
 			   		
 		_mesh = pieces[i];
-		if (collvar[0]){
-			count_iter+=1;
-			let j= Math.max(pieces[i].userData.length - count_iter-1,0);	
-				   			
-            _mesh.position.y=_mesh.userData[j][0].y;
-            _mesh.position.x=_mesh.userData[j][0].x;
-            _mesh.position.z=_mesh.userData[j][0].z;
-
-		};	
 	};
 };
 
