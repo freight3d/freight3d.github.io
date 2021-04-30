@@ -110,14 +110,6 @@ function create_piece(){
 	});
 }
 	
-//		
-//function createUserData(){
-//    for(i=0;i<pieces.length;i++){	
-//
-//    	pieces[i].userData = [];
-//   	}
-//}
-
 function savePos(_mesh) {
 	var collisionBool=false;
 	var collisionBoolAll=false;
