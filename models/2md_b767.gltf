@@ -25,6 +25,19 @@
     {
       "pbrMetallicRoughness": {
         "baseColorFactor": [
+          0.7667,
+          0.7667,
+          0.7667,
+          1.0
+        ],
+        "metallicFactor": 0.1,
+        "roughnessFactor": 0.9
+      },
+      "name": "Material4"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
           0.4045,
           0.4045,
           0.4045,
@@ -117,6 +130,15 @@
           "indices": 5,
           "mode": 4,
           "material": 3
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 6,
+          "mode": 4,
+          "material": 4
         }
       ]
     }
@@ -157,8 +179,15 @@
     {
       "bufferView": 2,
       "componentType": 5121,
-      "count": 42,
+      "count": 6,
       "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5121,
+      "count": 36,
+      "type": "SCALAR",
+      "byteOffset": 6
     },
     {
       "bufferView": 2,
