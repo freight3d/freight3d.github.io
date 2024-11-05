@@ -3,11 +3,12 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Freight 3D Tool</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width">
 		<meta name="author" content="Rodrigo Rivera Labbe">
 		<meta name="description" content="Aircraft Freight 3D models">
 		<link rel="stylesheet" href="style.css">
 		<link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet">
+
 
 	</head>
 
@@ -16,6 +17,7 @@
 		<script src="src/GLTFLoader.js"></script>
 		<script src="src/OrbitControls.js"></script>
 		<script src="src/DragControls.js"></script>
+		<script src="src/cannon.js"></script>
 	
 		<script>
 			window.onload = function(e) {
@@ -34,6 +36,9 @@
 				document.getElementById("clear").addEventListener("click", function(){
  				clear_pieces();
  				});
+				 document.getElementById("clear_all").addEventListener("click", function(){
+				resetAllMeshes();
+				});
 			};	
 		</script>	
 
@@ -74,10 +79,11 @@
 			<input type="radio" name="units" value="cm"> cm
 			<input type="radio" name="units" value="in" checked> in
 			<button type="button" class="button2" id="piece"> Add Piece </button>
-			<button type="button" class="button3" id="clear"> Delete </button>  
+			<button type="button" class="button3" id="clear"> Remove Piece </button>
+			<button type="button" class="button4" id="clear_all"> Clear All </button>
 		</form>
 		</div>
 
 		<div id="frame"><script src="src/app.js"></script></div>
-		<div> Insert dimensions to add piece | Right click to delete pieces or [Delete] button <a href="https://www.linkedin.com/in/rodrigo-rivera-labbe/" target="_blank"><img class="social-icons" src="./images/linkedin.png" alt="linkedin icon"></a> </div>
+		<div> Insert dimensions to add piece | [Remove Piece] button to delete last piece | Right button for piece rotation <a href="https://www.linkedin.com/in/rodrigo-rivera-labbe/" target="_blank"><img class="social-icons" src="./images/linkedin.png" alt="linkedin icon"></a> </div>
 	</body>
