@@ -71,7 +71,7 @@ renderer.domElement.addEventListener('mouseup', (event) => {
     if (event.button === 2 && selectedPiece) { // Right mouse button
         // Restore the mass of the piece to its original value (e.g., 10)
         if (selectedPiece.userData.physicsBody) {
-            selectedPiece.userData.physicsBody.mass = 50;
+            selectedPiece.userData.physicsBody.mass = 100;
             selectedPiece.userData.physicsBody.updateMassProperties();
         }
 
@@ -126,7 +126,7 @@ function preventPiecesFalling(disable) {
                 body.mass = 0; // Set mass to 0 to prevent falling
                 body.velocity.set(0, 0, 0); // Stop any movement
             } else {
-                body.mass = 50; // Restore mass to original value
+                body.mass = 100; // Restore mass to original value
                 body.updateMassProperties(); // Update mass properties
             }
         }
@@ -292,7 +292,7 @@ function uld(model_name) {
     });
 }
 
-//
+// Create Cube Piece
 function create_piece() {
     const loaderTexture = new THREE.TextureLoader();
     loaderTexture.load('images/box.jpg', (texture) => {
@@ -327,7 +327,7 @@ function create_piece() {
             });   
         var shape = new CANNON.Box(new CANNON.Vec3(width / 2, height / 2, length / 2));
         var body = new CANNON.Body({
-            mass: 50, // Set to 0 for static objects (no gravity)
+            mass: 100, // Set to 0 for static objects (no gravity)
             position: new CANNON.Vec3(cube.position.x-4, cube.position.y+5, cube.position.z),
             material: softMaterial
         });
@@ -337,6 +337,64 @@ function create_piece() {
 
         // Link the Cannon.js body with the Three.js mesh
         cube.userData.physicsBody = body;
+    });
+}
+
+// Create Engine Piece
+function create_piece_2() {
+    const loaderTexture = new THREE.TextureLoader();
+    loaderTexture.load('images/metal.jpg', (texture) => {
+        const material = new THREE.MeshBasicMaterial({ map: texture });
+        let width, height, length;
+
+        if (document.getElementsByName("units")[0].checked) {
+            width = document.getElementsByName("width")[0].value / 200;
+            height = document.getElementsByName("height")[0].value / 200;
+            length = document.getElementsByName("length")[0].value / 100;
+        } else if (document.getElementsByName("units")[1].checked) {
+            width = document.getElementsByName("width")[0].value / 78.74;
+            height = document.getElementsByName("height")[0].value / 78.74;
+            length = document.getElementsByName("length")[0].value / 39.37;
+        }
+
+        // Create a half-oval shape using the Three.js Shape class
+        const halfOvalShape = new THREE.Shape();
+        const xRadius = width; // Horizontal radius
+        const yRadius = height*2; // Vertical radius
+
+        // Draw a half-ellipse (oval)
+        halfOvalShape.absellipse(0, 0, xRadius, yRadius, Math.PI, 0, true, 0);
+        halfOvalShape.lineTo(0, 0); // Close the shape to form a solid half-oval
+
+        // Create an extruded geometry from the half-oval shape
+        const extrudeSettings = {
+            depth: length, // Thickness of the half-oval
+            bevelEnabled: false
+        };
+        const geometry = new THREE.ExtrudeGeometry(halfOvalShape, extrudeSettings);
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.userData = [];
+        scene.add(mesh);
+        pieces.push(mesh);
+        pieces2.push(mesh);
+
+        // Create a Cannon.js body for simple collision (e.g., a box or combination)
+        const softMaterial = new CANNON.Material({
+            friction: 0.9,
+            restitution: 0
+        });
+        const shape = new CANNON.Box(new CANNON.Vec3(xRadius, yRadius/100, length)); // Approximation for physics
+        const body = new CANNON.Body({
+            mass: 100,
+            position: new CANNON.Vec3(mesh.position.x - 4, mesh.position.y + 5, mesh.position.z-1),
+            material: softMaterial
+        });
+        body.addShape(shape);
+        world.addBody(body);
+        collisionMesh.push(mesh);
+
+        // Link Cannon.js body with the Three.js mesh
+        mesh.userData.physicsBody = body;
     });
 }
 
