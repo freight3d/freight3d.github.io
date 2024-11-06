@@ -33,6 +33,9 @@
 				document.getElementById("piece").addEventListener("click", function(){
  				create_piece();
  				});
+				document.getElementById("piece2").addEventListener("click", function(){
+				create_piece_2();
+				});
 				document.getElementById("clear").addEventListener("click", function(){
  				clear_pieces();
  				});
@@ -78,12 +81,13 @@
 			<input type="number" name="height" min="0" max="200" value="50">
 			<input type="radio" name="units" value="cm"> cm
 			<input type="radio" name="units" value="in" checked> in
-			<button type="button" class="button2" id="piece"> Add Piece </button>
+			<button type="button" class="button2" id="piece"> Add Box </button>
+			<button type="button" class="button2" id="piece2"> Add Engine </button>
 			<button type="button" class="button3" id="clear"> Remove Piece </button>
 			<button type="button" class="button4" id="clear_all"> Clear All </button>
 		</form>
 		</div>
 
 		<div id="frame"><script src="src/app.js"></script></div>
-		<div> Insert dimensions to add piece | [Remove Piece] button to delete last piece | Right button for piece rotation <a href="https://www.linkedin.com/in/rodrigo-rivera-labbe/" target="_blank"><img class="social-icons" src="./images/linkedin.png" alt="linkedin icon"></a> </div>
+		<div> &nbsp Insert dimensions to add piece | [Remove Piece] button to delete the most recently added piece | Right-click to rotate the piece <a href="https://www.linkedin.com/in/rodrigo-rivera-labbe/" target="_blank"><img class="social-icons" src="./images/linkedin.png" alt="linkedin icon"></a> </div>
 	</body>
